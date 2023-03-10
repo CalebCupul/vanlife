@@ -13,7 +13,8 @@ module.exports = {
         'custom-orange': {
           100: '#FFF7ED',
           200: '#FFEAD0',
-          300: '#FF8C38'
+          300: '#FF8C38',
+          400: '#FFCC8D'
         },
         'custom-gray': {
           100: '#4D4D4D',
