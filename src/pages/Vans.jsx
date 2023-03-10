@@ -22,7 +22,7 @@ function Vans() {
         <span>${van.price}</span>
       </div>
       <p className="text-right text-sm">/day</p>
-      <span className={`py-2 capitalize px-4 bg-interactive-states-${ van.type === 'simple' ? '100' : van.type === 'luxury' ? '200' : '300'} text-custom-orange-200 rounded-md font-semibold`}>
+      <span className={`py-2 capitalize px-4 ${ van.type === 'simple' ? 'bg-interactive-states-100' : van.type === 'luxury' ? 'bg-interactive-states-200' : 'bg-interactive-states-300'} text-custom-orange-200 rounded-md font-semibold`}>
         { van.type}
       </span>
     </div>
