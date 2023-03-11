@@ -11,20 +11,26 @@ function Vans() {
   }, []);
 
   const vanElements = vans.map((van) => (
-    <div>
-      <img
-        className="rounded-md"
-        src={van.imageUrl}
-        alt={van.description}
-      />
-      <div className="flex justify-between font-semibold text-xl mt-4">
-        <p>{van.name}</p>
-        <span>${van.price}</span>
-      </div>
-      <p className="text-right text-sm">/day</p>
-      <span className={`py-2 capitalize px-4 ${ van.type === 'simple' ? 'bg-interactive-states-100' : van.type === 'luxury' ? 'bg-interactive-states-200' : 'bg-interactive-states-300'} text-custom-orange-200 rounded-md font-semibold`}>
-        { van.type}
-      </span>
+    <div key={van.id}>
+      <Link to={`/vans/${van.id}`}>
+        <img className="rounded-md" src={van.imageUrl} alt={van.description} />
+        <div className="flex justify-between font-semibold text-xl mt-4">
+            <p>{van.name}</p>
+            <span>${van.price}</span>
+        </div>
+        <p className="text-right text-sm">/day</p>
+        <span
+            className={`py-2 capitalize px-4 ${
+            van.type === "simple"
+                ? "bg-interactive-states-100"
+                : van.type === "luxury"
+                ? "bg-interactive-states-200"
+                : "bg-interactive-states-300"
+            } text-custom-orange-200 rounded-md font-semibold`}
+        >
+            {van.type}
+        </span>
+      </Link>
     </div>
   ));
 
@@ -41,9 +47,7 @@ function Vans() {
           </span>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-6 mt-14">
-        { vanElements }
-      </div>
+      <div className="grid grid-cols-2 gap-6 mt-14">{vanElements}</div>
     </section>
   );
 }
