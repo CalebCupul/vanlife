@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import starImage from "../../assets/star3.png";
 import testVanImage from "../../assets/image-55.png";
 
+
 function Dashboard() {
   return (
     <section className="font-inter">
