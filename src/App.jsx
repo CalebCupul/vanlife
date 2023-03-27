@@ -37,7 +37,7 @@ function App() {
             <Route path="vans" element={<HostVans />} />
             
             <Route path="vans/:id" element={<HostVanDetail />} >
-              <Route path="details" element={<HostVanInfo />} />
+              <Route index element={<HostVanInfo />} />
               <Route path="pricing" element={<HostVanPricing />} />
               <Route path="photos" element={<HostVanPhotos />} />
             </Route>

@@ -63,7 +63,7 @@ function HostVanDetail() {
         <header className="mt-5">
           <nav className="text-custom-gray-100 font-semibold flex gap-8 items-center">
             <NavLink
-              to="details"
+              to="."
               className={ ({isActive}) => `${isActive ? 'text-interactive-states-200 underline underline-offset-4 ' : ''}hover:text-interactive-states-200 hover:underline hover:underline-offset-4` }
             >
               Details
