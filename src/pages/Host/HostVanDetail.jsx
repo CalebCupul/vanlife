@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import testVanImage from "../../assets/image-55.png";
 
 function HostVanDetail() {
@@ -11,7 +11,7 @@ function HostVanDetail() {
     fetch(`/api/host/vans/${id}`)
       .then((res) => res.json())
       .then((data) => setCurrentVan(data.vans[0]));
-  });
+  }, []);
 
   if (!currentVan) {
     return <h1 className="font-inter">Loading ...</h1>
@@ -34,7 +34,7 @@ function HostVanDetail() {
           />
         </svg>
         <span className="underline underline-offset-4">
-          <a href="/host/vans">Back to all vans</a>
+            <Link to=".." relative="path">Back to all vans</Link>
         </span>
       </div>
       <article className="bg-white mt-8 p-5 rounded-lg">
@@ -63,33 +63,27 @@ function HostVanDetail() {
         <header className="mt-5">
           <nav className="text-custom-gray-100 font-semibold flex gap-8 items-center">
             <NavLink
-              to="/details"
-              className="hover:text-interactive-states-200 hover:underline hover:underline-offset-4 hover:font-bold"
+              to="details"
+              className={ ({isActive}) => `${isActive ? 'text-interactive-states-200 underline underline-offset-4 ' : ''}hover:text-interactive-states-200 hover:underline hover:underline-offset-4` }
             >
               Details
             </NavLink>
             <NavLink
-              to="/:id/pricing"
-              className="hover:text-interactive-states-200 hover:underline hover:underline-offset-4 hover:font-bold"
-            >
+              to="pricing"
+              className={ ({isActive}) => `${isActive ? 'text-interactive-states-200 underline underline-offset-4 ' : ''}hover:text-interactive-states-200 hover:underline hover:underline-offset-4` }
+              >
               Pricing
             </NavLink>
 
             <NavLink
-              to="/photos"
-              className="hover:text-interactive-states-200 hover:underline hover:underline-offset-4 hover:font-bold"
-            >
+              to="photos"
+              className={ ({isActive}) => `${isActive ? 'text-interactive-states-200 underline underline-offset-4 ' : ''}hover:text-interactive-states-200 hover:underline hover:underline-offset-4` }
+              >
               Photos
             </NavLink>
           </nav>
         </header>
-        <Outlet />
-        {/* <div className="mt-5 flex flex-col gap-2">
-            <p><strong>Name:</strong> Modest Explorer</p>
-            <p><strong>Category:</strong> Simple</p>
-            <p><strong>Description:</strong> Description: The Modest Explorer is a van designed to get you out of the house and into nature. This beauty is equipped with solar panels, a composting toilet, a water tank and kitchenette. The idea is that you can pack up your home and escape for a weekend or even longer!</p>
-            <p><strong>Visibility:</strong> Public</p>
-        </div> */}
+        <Outlet context={[currentVan, setCurrentVan]} />
       </article>
     </section>
   );
